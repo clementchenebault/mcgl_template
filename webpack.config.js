@@ -53,6 +53,8 @@ module.exports = {
     root:__dirname + "/js",
     fallback: path.join(__dirname, "node_modules"),
     alias: {
+      'mcgl': 'mcgl',
+      'gl-matrix': 'gl-matrix'
     }
   },
   plugins : [

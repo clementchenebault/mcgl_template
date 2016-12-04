@@ -1,4 +1,4 @@
-import GL from './helpers/GLHelpers';
+import mcgl, {GL} from 'mcgl';
 import Scene from './Scene';
 import dat from 'dat-gui'
 
@@ -26,7 +26,7 @@ function _init(){
 
   let p = document.createElement("p");
   p.setAttribute("id", "info")
-  p.innerHTML = isMobile? "TOUCH SCREEN" : "PRESS (SPACE)";
+  // p.innerHTML = isMobile? "TOUCH SCREEN" : "PRESS (SPACE)";
 
   document.body.appendChild(p);
 

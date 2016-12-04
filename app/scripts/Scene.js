@@ -1,11 +1,12 @@
-import Camera from './helpers/gl_helpers/Camera'
-import GLShader from './helpers/gl_helpers/GLShader';
-import GL from './helpers/GLHelpers';
-import OrbitalControl from './helpers/gl_helpers/OrbitalControl';
+import mcgl, {GL} from 'mcgl';
+// import Camera from './helpers/gl_helpers/Camera'
+// import GLShader from './helpers/gl_helpers/GLShader';
+// import GL from './helpers/GLHelpers';
+// import OrbitalControl from './helpers/gl_helpers/OrbitalControl';
 
-import Floor from './views/Floor';
-import ViewBackground from './views/ViewBackground';
-import AxisY from './helpers/gl_helpers/views/AxisY';
+// import Floor from './views/Floor';
+// import ViewBackground from './views/ViewBackground';
+// import AxisY from './helpers/gl_helpers/views/AxisY';
 import ViewSphere from './views/ViewSphere';
 
 let gl;
@@ -19,11 +20,9 @@ class Scene {
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
-    this.orbitalControl = new OrbitalControl();
-    this.camera = new Camera();
+    this.orbitalControl = mcgl.orbitalControl;
+    this.camera = mcgl.camera;
 
-    this.viewBackground = new ViewBackground();
-    this.viewFloor = new Floor();
     this.viewSphere = new ViewSphere();
 
     window.addEventListener('resize', this.resize.bind(this));
@@ -37,7 +36,6 @@ class Scene {
 
   render(){
     GL.setMatrices(this.camera);
-
 
     this.tick++;
     this.orbitalControl.offsetPosition[0] = 0;
@@ -55,11 +53,12 @@ class Scene {
 
     this.camera.lookAt(target, up);
 
-    gl.disable(gl.DEPTH_TEST);
-    this.viewBackground.render();
-    gl.enable(gl.DEPTH_TEST);
+    // gl.disable(gl.DEPTH_TEST);
+    // this.viewBackground.render();
+    // gl.enable(gl.DEPTH_TEST);
 
-    this.viewFloor.render();
+    this.viewSphere.render();
+    // this.viewFloor.render();
   }
 
   resize(){
