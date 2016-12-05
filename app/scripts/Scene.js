@@ -1,13 +1,6 @@
 import mcgl, {GL} from 'mcgl';
-// import Camera from './helpers/gl_helpers/Camera'
-// import GLShader from './helpers/gl_helpers/GLShader';
-// import GL from './helpers/GLHelpers';
-// import OrbitalControl from './helpers/gl_helpers/OrbitalControl';
-
-// import Floor from './views/Floor';
-// import ViewBackground from './views/ViewBackground';
-// import AxisY from './helpers/gl_helpers/views/AxisY';
 import ViewSphere from './views/ViewSphere';
+import McglFloor from './views/McglFloor';
 
 let gl;
 
@@ -22,14 +15,13 @@ class Scene {
 
     this.orbitalControl = mcgl.orbitalControl;
     this.camera = mcgl.camera;
-
     this.viewSphere = new ViewSphere();
+    this.xAxisPlane = new McglFloor();
 
     window.addEventListener('resize', this.resize.bind(this));
   }
 
   update(){
-
     this.render();
   }
 
@@ -53,9 +45,10 @@ class Scene {
 
     this.camera.lookAt(target, up);
 
-    // gl.disable(gl.DEPTH_TEST);
+    gl.disable(gl.DEPTH_TEST);
+    this.xAxisPlane.render();
     // this.viewBackground.render();
-    // gl.enable(gl.DEPTH_TEST);
+    gl.enable(gl.DEPTH_TEST);
 
     this.viewSphere.render();
     // this.viewFloor.render();

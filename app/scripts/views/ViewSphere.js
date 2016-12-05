@@ -11,7 +11,9 @@ class ViewSphere {
     this.tick = 0;
     this.shader = new GLShader(vs, fs);
     this.shader.bind();
+    console.log("here--0", this.shader, GL.gl.TRIANGLES);
     this.sphere = new mcgl.geom.Sphere(this.shader.shaderProgram, 128, 150);
+    console.log("here--1");
     this.sphere.position = [0, 200, 100]
 
     this.back = false;
