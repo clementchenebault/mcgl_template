@@ -30,14 +30,16 @@ class Scene {
     GL.setMatrices(this.camera);
 
     this.tick++;
-    this.orbitalControl.offsetPosition[0] = 0;
-    this.orbitalControl.offsetPosition[1] = 450;
-    this.orbitalControl.radius = 800// + Math.cos(this.tick/100) * 100;
+    this.orbitalControl.position[0] = 0;
+    this.orbitalControl.position[1] = 450;
+    // this.orbitalControl.radius = 800// + Math.cos(this.tick/100) * 100;
     // this.orbitalControl.angleA = Math.PI/2 + Math.cos(this.tick/200) * Math.PI/8;
-    this.orbitalControl.angleA += 0.004;
+    // this.orbitalControl.angleA += 0.004;
+
+    // console.log(this.orbitalControl.radius);
     // this.orbitalControl.angleA = Math.PI /2;
     this.orbitalControl.update();
-    this.camera.position = this.orbitalControl.position;
+    this.camera.position = this.orbitalControl._position;
 
     this.camera.perspective(60 * Math.PI / 180, GL.aspectRatio, 1, 2000);
     var target = [0, 0, 0];
@@ -46,10 +48,10 @@ class Scene {
     this.camera.lookAt(target, up);
 
     gl.disable(gl.DEPTH_TEST);
-    this.xAxisPlane.render();
     // this.viewBackground.render();
     gl.enable(gl.DEPTH_TEST);
-
+    
+    this.xAxisPlane.render();
     this.viewSphere.render();
     // this.viewFloor.render();
   }

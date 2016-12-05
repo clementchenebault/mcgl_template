@@ -1,5 +1,4 @@
 import mcgl, {GLShader} from 'mcgl';
-// import Matrices from '../helpers/Matrices';
 import glmatrix from 'gl-matrix';
 import vs from '../../shaders/default.vert'
 import fs from '../../shaders/default.frag'
