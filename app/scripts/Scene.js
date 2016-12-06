@@ -1,5 +1,6 @@
 import mcgl, {GL} from 'mcgl';
 import ViewSphere from './views/ViewSphere';
+import ViewCube from './views/ViewCube';
 import McglFloor from './views/McglFloor';
 
 let gl;
@@ -16,6 +17,7 @@ class Scene {
     this.orbitalControl = mcgl.orbitalControl;
     this.camera = mcgl.camera;
     this.viewSphere = new ViewSphere();
+    this.viewCube = new ViewCube();
     this.xAxisPlane = new McglFloor();
 
     window.addEventListener('resize', this.resize.bind(this));
@@ -50,9 +52,10 @@ class Scene {
     gl.disable(gl.DEPTH_TEST);
     // this.viewBackground.render();
     gl.enable(gl.DEPTH_TEST);
-    
+
     this.xAxisPlane.render();
-    this.viewSphere.render();
+    // this.viewSphere.render();
+    this.viewCube.render();
     // this.viewFloor.render();
   }
 

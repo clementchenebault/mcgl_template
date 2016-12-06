@@ -4,6 +4,7 @@ import dat from 'dat-gui'
 
 window.addEventListener('DOMContentLoaded', _init);
 window.GL = GL;
+window.ASSET_URL = "../../assets/";
 
 var scene, gl, mouseX, mouseY, globalTime = Math.random() * 10000, canvas;
 
