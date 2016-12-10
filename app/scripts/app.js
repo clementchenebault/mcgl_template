@@ -39,7 +39,7 @@ function _init(){
 
   GL.reset(gl);
 
-  // window.gui = new dat.GUI({ width:300 });
+  window.gui = new dat.GUI({ width:300 });
 
   // create the shaders
 
@@ -58,6 +58,21 @@ function _init(){
 
 
   update();
+
+  if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1)
+    {
+        var args = [
+            '\n %c 🍔 ⚡ mcgl.js %c 🍔  ',
+            'background: #000000; padding:5px 0; color: #ffffff',
+            'background: #000000; padding:5px 0; color: #ffffff;'
+        ];
+
+        window.console.log.apply(console, args); //jshint ignore:line
+    }
+    else if (window.console)
+    {
+        window.console.log('mcgl.js '); //jshint ignore:line
+    }
 }
 
 

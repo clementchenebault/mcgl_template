@@ -21,6 +21,7 @@ class Scene {
     this.xAxisPlane = new McglFloor();
 
     window.addEventListener('resize', this.resize.bind(this));
+    this.controller = new mcgl.Controller();
   }
 
   update(){
