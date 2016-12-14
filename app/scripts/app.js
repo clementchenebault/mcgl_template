@@ -2,11 +2,37 @@ import mcgl, {GL} from 'mcgl';
 import Scene from './Scene';
 import dat from 'dat-gui'
 
-window.addEventListener('DOMContentLoaded', _init);
+window.addEventListener('DOMContentLoaded', _domLoaded);
 window.GL = GL;
 window.ASSET_URL = "../../assets/";
 
 var scene, gl, mouseX, mouseY, globalTime = Math.random() * 10000, canvas;
+
+let loader = new Loader();
+loader.onComplete.addOnce(_assetsLoaded);
+loader.addAssets([
+  // ASSET_URL + "images/earth.png"
+])
+
+loader.load();
+
+let domLoaded = false;
+let assetsLoaded = false;
+
+function _assetsLoaded(){
+  assetsLoaded = true;
+
+  if(domLoaded) {
+    _init();
+  }
+}
+
+function _domLoaded(){
+  domLoaded = true;
+  if(assetsLoaded) {
+    _init();
+  }
+}
 
 function _init(){
   // console.log(GLHelpers);
